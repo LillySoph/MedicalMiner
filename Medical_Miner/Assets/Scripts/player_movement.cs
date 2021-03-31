@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class player_movement : MonoBehaviour
 {
-  [SerializeField] // <-- private but still shows up in Unity GUI
-  private float speed = 5.0f;
-  [SerializeField]
-  private float shamshDown = 10.0f;
-  [SerializeField]
-  private float jumpSpeed = 8f;
-  [SerializeField]
+  [SerializeField]// <-- private but still shows up in Unity GUI
   private Rigidbody2D rigidBody;
   [SerializeField]
   private BoxCollider2D boxCollider2d;
   [SerializeField]
   private LayerMask groudLayer;
+
+  [SerializeField]
+  private float speed;
+  [SerializeField]
+  private float shamshDown;
+
+  [SerializeField]
+  private float jumpIncrease;
+  [SerializeField]
+  private float maxJumpSpeed;
+  [SerializeField]
+  private float timeToIncrease;
+  [SerializeField]
+  private float jumpSpeed;
+  private bool jumping = false;
+  private float startTime;
+  private float tempJumpSpeed;
+  private float tempTimeToIncrease;
+
 
   private bool isGrounded(){
     float extraHeight = 0.02f;
@@ -38,12 +51,39 @@ public class player_movement : MonoBehaviour
 
       if (Input.GetKey(KeyCode.S) && !isGrounded()){
         //ForceDown stops jump and speeds down
+        jumping = false;
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
   			transform.position += Vector3.down * shamshDown * Time.deltaTime;
   		}
-      if (Input.GetKey(KeyCode.Space) && isGrounded() && !Input.GetKey(KeyCode.S)){
+
+      if (Input.GetKeyDown(KeyCode.Space) && isGrounded() && !Input.GetKey(KeyCode.S)){
         //Jump only if on Ground and not ForceDown
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x,jumpSpeed);
+        if(!jumping){
+          rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+        }
+        jumping = true;
+        tempJumpSpeed = jumpSpeed;
+        tempTimeToIncrease = timeToIncrease;
+        startTime = Time.time;
+  		}
+      if (Input.GetKeyUp(KeyCode.Space)){
+        //Resets everything for next Jump
+        tempJumpSpeed = jumpSpeed;
+        tempTimeToIncrease = timeToIncrease;
+        jumping = false;
+      }
+      if (Input.GetKey(KeyCode.Space) && jumping){
+        //longjump
+        if(Time.time - startTime > tempTimeToIncrease){
+          if(tempJumpSpeed + jumpIncrease > maxJumpSpeed){
+            jumping = false;
+          }else{
+            tempJumpSpeed = tempJumpSpeed + jumpIncrease;
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, tempJumpSpeed);
+            startTime = Time.time;
+            tempTimeToIncrease = (int) (tempTimeToIncrease/1.5);
+          }
+        }
   		}
   	}
 
