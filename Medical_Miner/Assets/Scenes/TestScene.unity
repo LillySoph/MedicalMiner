@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 78183476}
   - component: {fileID: 78183478}
   - component: {fileID: 78183477}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Square (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 1050663171}
   - component: {fileID: 1050663173}
   - component: {fileID: 1050663172}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Square (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -899,6 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  shamshDown: 10
   jumpSpeed: 8
   rigidBody: {fileID: 1721657617}
   boxCollider2d: {fileID: 1721657618}
@@ -1045,7 +1046,7 @@ GameObject:
   - component: {fileID: 1971195672}
   - component: {fileID: 1971195674}
   - component: {fileID: 1971195673}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Square (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1263,7 +1264,7 @@ GameObject:
   - component: {fileID: 2143553738}
   - component: {fileID: 2143553740}
   - component: {fileID: 2143553739}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Square (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}

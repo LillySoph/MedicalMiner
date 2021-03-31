@@ -7,6 +7,8 @@ public class player_movement : MonoBehaviour
   [SerializeField] // <-- private but still shows up in Unity GUI
   private float speed = 5.0f;
   [SerializeField]
+  private float shamshDown = 10.0f;
+  [SerializeField]
   private float jumpSpeed = 8f;
   [SerializeField]
   private Rigidbody2D rigidBody;
@@ -37,7 +39,7 @@ public class player_movement : MonoBehaviour
       if (Input.GetKey(KeyCode.S) && !isGrounded()){
         //ForceDown stops jump and speeds down
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
-  			transform.position += Vector3.down * speed * Time.deltaTime;
+  			transform.position += Vector3.down * shamshDown * Time.deltaTime;
   		}
       if (Input.GetKey(KeyCode.Space) && isGrounded() && !Input.GetKey(KeyCode.S)){
         //Jump only if on Ground and not ForceDown
