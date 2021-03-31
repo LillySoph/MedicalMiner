@@ -39,7 +39,6 @@ public class player_movement : MonoBehaviour
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
   			transform.position += Vector3.down * speed * Time.deltaTime;
   		}
-
       if (Input.GetKey(KeyCode.Space) && isGrounded() && !Input.GetKey(KeyCode.S)){
         //Jump only if on Ground and not ForceDown
         rigidBody.velocity = new Vector2(rigidBody.velocity.x,jumpSpeed);
