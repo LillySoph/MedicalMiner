@@ -589,7 +589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193336099}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 2.857143, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1623643393}
@@ -935,11 +935,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   speed: 5
-  shamshDown: 8
-  jumpIncrease: 0.05
-  maxJumpSpeed: 7
+  shamshDown: 15
+  jumpIncrease: 0.1
+  maxJumpSpeed: 11
   timeToIncrease: 0.1
-  jumpSpeed: 3
+  jumpSpeed: 7
 --- !u!50 &1721657617
 Rigidbody2D:
   serializedVersion: 4
@@ -955,7 +955,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

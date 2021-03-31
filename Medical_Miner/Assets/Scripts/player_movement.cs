@@ -56,11 +56,10 @@ public class player_movement : MonoBehaviour
   			transform.position += Vector3.down * shamshDown * Time.deltaTime;
   		}
 
-      if (Input.GetKeyDown(KeyCode.Space) && isGrounded() && !Input.GetKey(KeyCode.S)){
+      if (Input.GetKey(KeyCode.Space) && isGrounded() && !Input.GetKey(KeyCode.S) && !jumping){
         //Jump only if on Ground and not ForceDown
-        if(!jumping){
-          rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
-        }
+
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
         jumping = true;
         tempJumpSpeed = jumpSpeed;
         tempTimeToIncrease = timeToIncrease;
@@ -72,6 +71,7 @@ public class player_movement : MonoBehaviour
         tempTimeToIncrease = timeToIncrease;
         jumping = false;
       }
+
       if (Input.GetKey(KeyCode.Space) && jumping){
         //longjump
         if(Time.time - startTime > tempTimeToIncrease){
@@ -81,7 +81,7 @@ public class player_movement : MonoBehaviour
             tempJumpSpeed = tempJumpSpeed + jumpIncrease;
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, tempJumpSpeed);
             startTime = Time.time;
-            tempTimeToIncrease = (int) (tempTimeToIncrease/1.5);
+            tempTimeToIncrease = (int) (tempTimeToIncrease/1.2);
           }
         }
   		}
