@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - movingPlatform
+  - GM
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
