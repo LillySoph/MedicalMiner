@@ -9,7 +9,7 @@ public class player_movement : MonoBehaviour
   [SerializeField]
   private BoxCollider2D boxCollider2d;
   [SerializeField]
-  private LayerMask groudLayer;
+  private LayerMask groundLayer;
 
   [SerializeField]
   private float speed;
@@ -31,10 +31,16 @@ public class player_movement : MonoBehaviour
 
 
   private bool isGrounded(){
-    float extraHeight = 0.02f;
     //Box around bottom of player that checks if player is on something with the Layer "Ground"
-    RaycastHit2D raycast = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size,0f, Vector2.down, extraHeight, groudLayer);
-    return raycast.collider != null;
+    Vector2 position = transform.position;
+    Vector2 offset = new Vector2 (0.15f, 0.0f);
+    Vector2 direction = Vector2.down;
+    float distance = 0.6f;
+    Debug.DrawRay(position + offset, direction, Color.green);
+    Debug.DrawRay(position - offset, direction, Color.green);
+    RaycastHit2D raycastL = Physics2D.Raycast(position - offset, direction, distance, groundLayer);
+    RaycastHit2D raycastR = Physics2D.Raycast(position + offset, direction, distance, groundLayer);
+    return raycastL.collider != null || raycastR.collider != null;
   }
 
   // Time.deltaTime => time per frame

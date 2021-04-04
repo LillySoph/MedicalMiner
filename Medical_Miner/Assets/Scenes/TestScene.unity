@@ -506,7 +506,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904467820}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 1721657617}
   boxCollider2d: {fileID: 1721657618}
-  groudLayer:
+  groundLayer:
     serializedVersion: 2
     m_Bits: 64
   speed: 5

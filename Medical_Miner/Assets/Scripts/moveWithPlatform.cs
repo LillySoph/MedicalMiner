@@ -10,7 +10,7 @@ public class moveWithPlatform : MonoBehaviour
         if (other.transform.tag == "movingPlatform")
         {
             transform.parent = other.transform;
-            Debug.Log("We are on a moving platform");
+          //  Debug.Log("We are on a moving platform");
         }
     }
 
