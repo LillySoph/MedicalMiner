@@ -30,6 +30,7 @@ public class player_movement : MonoBehaviour
   private float startTime;
   private float tempJumpSpeed;
   private float tempTimeToIncrease;
+  private bool facingRight = true;
 
 
   private bool isGrounded(){
@@ -49,10 +50,18 @@ public class player_movement : MonoBehaviour
   		if (Input.GetKey(KeyCode.D)){
         //right
   			transform.position += Vector3.right * speed * Time.deltaTime;
+            if (facingRight == false)
+            {
+                Flip();
+            }
   		}
       if (Input.GetKey(KeyCode.A)){
         //left
         transform.position += Vector3.left * speed * Time.deltaTime;
+            if (facingRight == true)
+            {
+                Flip();
+            }
   		}
 
       if (Input.GetKey(KeyCode.S) && !isGrounded()){
@@ -92,6 +101,14 @@ public class player_movement : MonoBehaviour
         }
   		}
   	}
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
+    }
 
 
 }

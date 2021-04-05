@@ -279,7 +279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecad23caefb76df49a076eea6565dc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpoint: {fileID: 0}
 --- !u!61 &284562422
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -327,11 +326,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8727562666700457043, guid: 37f05745973c85b46a8663385c606879, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.5
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8727562666700457043, guid: 37f05745973c85b46a8663385c606879, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8727562666700457043, guid: 37f05745973c85b46a8663385c606879, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2351,7 +2350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecad23caefb76df49a076eea6565dc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpoint: {fileID: 2061569911}
 --- !u!61 &1597511243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2469,7 +2467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecad23caefb76df49a076eea6565dc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpoint: {fileID: 0}
 --- !u!61 &1639195347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2556,7 +2553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bf442ff80cb694d81f7aa10b570c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastCheckPointPos: {x: -5.5, y: -2.5}
+  lastCheckPointPos: {x: -7.5, y: -3}
   score: 0
 --- !u!4 &2061569911
 Transform:
@@ -2616,7 +2613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecad23caefb76df49a076eea6565dc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpoint: {fileID: 0}
 --- !u!61 &2083528374
 BoxCollider2D:
   m_ObjectHideFlags: 0

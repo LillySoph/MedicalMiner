@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectKillsPlayer : MonoBehaviour
 {
 
-    [SerializeField] Transform checkpoint;
+    //[SerializeField] Transform checkpoint;
     private GameMaster gm;
     private Player_Checkpoint pc;
 
