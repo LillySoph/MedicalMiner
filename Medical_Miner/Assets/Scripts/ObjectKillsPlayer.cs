@@ -21,9 +21,9 @@ public class ObjectKillsPlayer : MonoBehaviour
         if (col.transform.CompareTag("Player"))
         {
             // reloads Scene
-            // pc.respawn();
+            pc.respawn();
             // only transforms position
-            col.transform.position = gm.lastCheckPointPos;
+            //col.transform.position = gm.lastCheckPointPos;
             // col.transform.position = checkpoint.position;
         }
 
