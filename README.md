@@ -11,5 +11,7 @@ Bisherige Steuerung:
   'Space' Jump
   
   'S' forceDown
+  
+  'R' Respawn
 
 -> Exceltabelle mit Aufgabenpaketen
