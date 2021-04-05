@@ -74,7 +74,8 @@ public class player_movement : MonoBehaviour
       if (Input.GetKey(KeyCode.Space) && isGrounded() && !Input.GetKey(KeyCode.S) && !jumping){
         //Jump only if on Ground and not ForceDown
 
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+        // rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, jumpSpeed);
         jumping = true;
         tempJumpSpeed = jumpSpeed;
         tempTimeToIncrease = timeToIncrease;
@@ -94,7 +95,8 @@ public class player_movement : MonoBehaviour
             jumping = false;
           }else{
             tempJumpSpeed = tempJumpSpeed + jumpIncrease;
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, tempJumpSpeed);
+            // rigidBody.velocity = new Vector2(rigidBody.velocity.x, tempJumpSpeed);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, tempJumpSpeed);
             startTime = Time.time;
             tempTimeToIncrease = (int) (tempTimeToIncrease/1.2);
           }
