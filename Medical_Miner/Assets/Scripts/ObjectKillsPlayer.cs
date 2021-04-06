@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectKillsPlayer : MonoBehaviour
 {
 
-    [SerializeField] Transform checkpoint;
+    //[SerializeField] Transform checkpoint;
     private GameMaster gm;
     private Player_Checkpoint pc;
 
@@ -20,11 +20,11 @@ public class ObjectKillsPlayer : MonoBehaviour
     {
         if (col.transform.CompareTag("Player"))
         {
-          // reloads Scene
+            // reloads Scene
             pc.respawn();
             // only transforms position
             //col.transform.position = gm.lastCheckPointPos;
-            //col.transform.position = checkpoint.position;
+            // col.transform.position = checkpoint.position;
         }
 
     }

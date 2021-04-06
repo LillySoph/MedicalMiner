@@ -30,6 +30,7 @@ public class player_movement : MonoBehaviour
   private float startTime;
   private float tempJumpSpeed;
   private float tempTimeToIncrease;
+  private bool facingRight = true;
 
 
   private bool isGrounded(){
@@ -49,10 +50,18 @@ public class player_movement : MonoBehaviour
   		if (Input.GetKey(KeyCode.D)){
         //right
   			transform.position += Vector3.right * speed * Time.deltaTime;
+            if (facingRight == false)
+            {
+                Flip();
+            }
   		}
       if (Input.GetKey(KeyCode.A)){
         //left
         transform.position += Vector3.left * speed * Time.deltaTime;
+            if (facingRight == true)
+            {
+                Flip();
+            }
   		}
 
       if (Input.GetKey(KeyCode.S) && !isGrounded()){
@@ -65,7 +74,8 @@ public class player_movement : MonoBehaviour
       if (Input.GetKey(KeyCode.Space) && isGrounded() && !Input.GetKey(KeyCode.S) && !jumping){
         //Jump only if on Ground and not ForceDown
 
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+        // rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, jumpSpeed);
         jumping = true;
         tempJumpSpeed = jumpSpeed;
         tempTimeToIncrease = timeToIncrease;
@@ -85,13 +95,22 @@ public class player_movement : MonoBehaviour
             jumping = false;
           }else{
             tempJumpSpeed = tempJumpSpeed + jumpIncrease;
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, tempJumpSpeed);
+            // rigidBody.velocity = new Vector2(rigidBody.velocity.x, tempJumpSpeed);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, tempJumpSpeed);
             startTime = Time.time;
             tempTimeToIncrease = (int) (tempTimeToIncrease/1.2);
           }
         }
   		}
   	}
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
+    }
 
 
 }
