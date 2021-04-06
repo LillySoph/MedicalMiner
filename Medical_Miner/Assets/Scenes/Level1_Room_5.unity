@@ -1383,6 +1383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa31f6755f30ff049bb2cceced256a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstRoomOfLevelIndex: 1
+  endscreenOfLevelIndex: 6
 --- !u!61 &604920619
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1668,7 +1670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971388734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.7938437, y: -1.4094524, z: 0.35072905}
+  m_LocalPosition: {x: 5.7938437, y: -1.4094524, z: 0}
   m_LocalScale: {x: 1.08, y: 4.1, z: 1}
   m_Children: []
   m_Father: {fileID: 964647194}
@@ -2605,7 +2607,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221776777}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9061565, y: -1.4094524, z: 0.35072905}
+  m_LocalPosition: {x: -3.9061565, y: -1.4094524, z: 0}
   m_LocalScale: {x: 1.08, y: 4.1, z: 1}
   m_Children: []
   m_Father: {fileID: 964647194}
@@ -2675,7 +2677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419921266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7038437, y: -2.639452, z: 0.35072905}
+  m_LocalPosition: {x: 0.7038437, y: -2.639452, z: 0}
   m_LocalScale: {x: 11, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 964647194}
@@ -2948,6 +2950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastCheckPointPos: {x: -7.5, y: -3}
   score: 0
+  roomsVisited: 0
 --- !u!4 &2061569911
 Transform:
   m_ObjectHideFlags: 0
