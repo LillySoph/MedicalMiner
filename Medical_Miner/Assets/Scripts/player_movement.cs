@@ -50,7 +50,7 @@ public class player_movement : MonoBehaviour
   		if (Input.GetKey(KeyCode.D)){
         //right
   			transform.position += Vector3.right * speed * Time.deltaTime;
-            if (facingRight == false)
+            if (!facingRight && !PauseMenu.GameIsPaused)
             {
                 Flip();
             }
@@ -58,7 +58,7 @@ public class player_movement : MonoBehaviour
       if (Input.GetKey(KeyCode.A)){
         //left
         transform.position += Vector3.left * speed * Time.deltaTime;
-            if (facingRight == true)
+            if (facingRight && !PauseMenu.GameIsPaused)
             {
                 Flip();
             }
