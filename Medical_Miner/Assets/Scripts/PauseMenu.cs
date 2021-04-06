@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,7 +10,13 @@ public class PauseMenu : MonoBehaviour
 
   public GameObject pauseMenuUI;
 
-  void Update () {
+  private GameMaster gameMaster;
+
+void Start() {
+	gameMaster = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+}
+
+void Update () {
   	if (Input.GetKeyDown(KeyCode.Escape)){
   		if(GameIsPaused){
   			Resume();
@@ -17,7 +24,7 @@ public class PauseMenu : MonoBehaviour
   			Pause();
   		}
   	}
-  }
+}
 
 public void Resume (){
   	pauseMenuUI.SetActive(false);
@@ -32,9 +39,14 @@ public void Pause (){
   	GameIsPaused = true;
   }
 
+// return to first room of level
 public void Restart (){
-  	//Time.timeScale = 1f;
-  	Debug.Log("Restarting (: ");
+  	Debug.Log("Restarting (: :)");
+	int index = 1 + ((gameMaster.currentLevel-1) * (gameMaster.differentRoomsPerLevel+1));
+	SceneManager.LoadScene(index);
+	// reset score to 0
+	gameMaster.score = 0;
+	Resume();
   }
 
 public void Timer(){

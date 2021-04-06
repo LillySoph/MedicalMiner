@@ -5,15 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LoadNextRoom : MonoBehaviour
 {
-    // [SerializeField]
+    [SerializeField]
     private int roomAmountPerLevel = 10;
-
-    [SerializeField]
-    private int firstRoomOfLevelIndex = 1;
-
-    [SerializeField]
-    private int endscreenOfLevelIndex = 6;
     
+    private int differentRoomsPerLevel;
+    
+    private int currentLevel;
     private GameMaster gameMaster;
     private int roomIndexOfBefore;
 
@@ -21,6 +18,8 @@ public class LoadNextRoom : MonoBehaviour
     void Start()
     {
         gameMaster = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+        currentLevel = gameMaster.currentLevel;
+        differentRoomsPerLevel = gameMaster.differentRoomsPerLevel;
     }
 
     // Update is called once per frame
@@ -31,20 +30,26 @@ public class LoadNextRoom : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // get number of rooms visited and current level
         int roomsVisited = gameMaster.roomsVisited;
-        // load next room in same level
+        
+
+        // load next room in same level, increase room visited count
         if (roomsVisited < roomAmountPerLevel) {
             int index = getIndexOfNextRoom();
             SceneManager.LoadScene(index);
-            Debug.Log("Room Index: " + index + " | " + roomsVisited + "/" + roomAmountPerLevel);
             gameMaster.roomsVisited++;
+            Debug.Log("Room Index: " + index + " | " + "Level: " + currentLevel + " | " + roomsVisited + "/" + roomAmountPerLevel);
+            
         } 
-        // load endscreen of level
+        // load endscreen of level, reset room count and increase level count
         else {
-            SceneManager.LoadScene(endscreenOfLevelIndex); 
+            int endscreenIndex = 1 + differentRoomsPerLevel + ((currentLevel-1) * (differentRoomsPerLevel+1));
+            Debug.Log("Endscreen Index: " + endscreenIndex);
+            SceneManager.LoadScene(endscreenIndex); 
             // reset room visited counter
-            gameMaster.roomsVisited = 0;
+            gameMaster.roomsVisited = 1;
+            gameMaster.currentLevel++;
         }
         
     }
@@ -53,9 +58,13 @@ public class LoadNextRoom : MonoBehaviour
     {
         int current = SceneManager.GetActiveScene().buildIndex;
         int next;
-        // int before = roomIndexOfBefore
+        
+        int before = roomIndexOfBefore;
+
+        int first = 2 + ((currentLevel-1) * (differentRoomsPerLevel+1));
+
         do {
-            next = Random.Range(firstRoomOfLevelIndex + 2, firstRoomOfLevelIndex + 5);
+            next = Random.Range(first, first + (differentRoomsPerLevel-1));
         } while (next == current);
 
         return next;

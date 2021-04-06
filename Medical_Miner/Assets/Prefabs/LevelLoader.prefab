@@ -70,5 +70,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa31f6755f30ff049bb2cceced256a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstRoomOfLevelIndex: 7
-  endscreenOfLevelIndex: 6
+  roomAmountPerLevel: 8
+  differentRoomsPerLevel: 6
