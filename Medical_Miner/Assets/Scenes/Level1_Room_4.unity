@@ -2463,7 +2463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8727562666700457036, guid: 3688fc0e12e39d7498501ea6bd112816, type: 3}
       propertyPath: maxJumpSpeed
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8727562666700457036, guid: 3688fc0e12e39d7498501ea6bd112816, type: 3}
       propertyPath: boxCollider2d
@@ -2667,7 +2667,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e8c5ff6d174c7c94d8ecce0e0f5074a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7381,6 +7381,10 @@ PrefabInstance:
     - target: {fileID: 2109025685861290424, guid: c02025af491b21d418c844f3d2119300, type: 3}
       propertyPath: m_Name
       value: Tilemap_Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 2109025685861290424, guid: c02025af491b21d418c844f3d2119300, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2109025685861290427, guid: c02025af491b21d418c844f3d2119300, type: 3}
       propertyPath: m_RootOrder

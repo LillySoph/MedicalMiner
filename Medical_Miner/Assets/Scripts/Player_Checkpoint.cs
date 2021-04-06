@@ -18,8 +18,8 @@ public class Player_Checkpoint : MonoBehaviour
           respawn();
         }
         if(Input.GetKeyDown(KeyCode.Q)){
-          Debug.Log(gm.score);
-          Debug.Log("Score");
+          Debug.Log("score:" + gm.score);
+
         }
   }
 

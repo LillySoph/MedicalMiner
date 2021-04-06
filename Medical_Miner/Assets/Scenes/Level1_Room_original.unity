@@ -2675,6 +2675,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tilemap_Background
       objectReference: {fileID: 0}
+    - target: {fileID: 2109025685861290424, guid: db025ed1956064845905a9234ee251fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2109025685861290427, guid: db025ed1956064845905a9234ee251fc, type: 3}
       propertyPath: m_RootOrder
       value: 2
