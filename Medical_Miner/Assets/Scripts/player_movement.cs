@@ -38,7 +38,7 @@ public class player_movement : MonoBehaviour
     Vector2 position = transform.position;
     Vector2 offset = new Vector2 (0.15f, 0.0f);
     Vector2 direction = Vector2.down;
-  
+
     RaycastHit2D raycastL = Physics2D.Raycast(position - offset, direction, distance, groundLayer);
     RaycastHit2D raycastR = Physics2D.Raycast(position + offset, direction, distance, groundLayer);
     return raycastL.collider != null || raycastR.collider != null;

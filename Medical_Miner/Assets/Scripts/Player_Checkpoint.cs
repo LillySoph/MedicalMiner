@@ -7,9 +7,6 @@ public class Player_Checkpoint : MonoBehaviour
 {
   private GameMaster gm;
 
-  // score for player
-  public int localScore;
-
   void Start (){
     gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
     transform.position = gm.lastCheckPointPos;
@@ -21,13 +18,13 @@ public class Player_Checkpoint : MonoBehaviour
           respawn();
         }
         if(Input.GetKeyDown(KeyCode.Q)){
-          Debug.Log(localScore);
+          Debug.Log(gm.score);
+          Debug.Log("Score");
         }
   }
 
   public void respawn(){
       // Reloads Scene with existing GameMaster
-      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-      localScore = gm.score;
+      transform.position = gm.lastCheckPointPos;
   }
 }

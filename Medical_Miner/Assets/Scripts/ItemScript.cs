@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-  private Player_Checkpoint pc;
+  private GameMaster gm;
 
   [SerializeField]
   private int value;
@@ -13,13 +13,13 @@ public class ItemScript : MonoBehaviour
   private float itemDestryDelay;
 
   void Start (){
-    pc = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Checkpoint>();
+    gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
   }
 
   void OnTriggerEnter2D(Collider2D other){
-    // increases global score by its value and destroys its gameObject after 0.3 sec
+    // increases global score by its value and destroys its gameObject after "itemDestryDelay" sec
     if(other.CompareTag("Player")){
-      pc.localScore += value;
+      gm.score += value;
       Destroy(gameObject, itemDestryDelay);
     }
   }
