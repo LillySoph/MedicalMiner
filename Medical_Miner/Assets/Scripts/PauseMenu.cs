@@ -49,14 +49,6 @@ public void Restart (){
 	Resume();
   }
 
-public void Timer(){
-  	Debug.Log("Timer (: ");
-  }
-
-public void Filler(){
-  	Debug.Log("Filler (: ");
-  }
-
 public void QuitGame(){
   	Debug.Log("QUIT LUL");
   	Application.Quit();
