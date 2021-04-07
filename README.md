@@ -11,6 +11,6 @@ Bisherige Steuerung:
   
   'Space' Jump
   
-  'S' forceDown
-  
   'R' Respawn
+  
+  or Arrow Keys
