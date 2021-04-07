@@ -9,6 +9,8 @@ public class player_movement : MonoBehaviour
   [SerializeField]
   private BoxCollider2D boxCollider2d;
   [SerializeField]
+  private GameObject playerGO;
+  [SerializeField]
   private LayerMask groundLayer;
 
   [SerializeField]
@@ -32,7 +34,12 @@ public class player_movement : MonoBehaviour
   private float tempTimeToIncrease;
   private bool facingRight = true;
 
+  public static bool endOfLevelStarting;
   public Animator animator;
+
+
+  private Vector3 scaleChange = new Vector3(-0.001f, -0.001f, 0.0f);
+  private Vector3 positionChange = new Vector3(0.0f, -0.005f, 0.0f);
 
   private bool isGrounded(){
     //Box around bottom of player that checks if player is on something with the Layer "Ground"
@@ -47,71 +54,91 @@ public class player_movement : MonoBehaviour
 
   // Time.deltaTime => time per frame
   // => movementspeed/seconds and not movementspeed/frame
-  private bool isJumping = false;
+  private bool isJumping = true;
+
   void Update () {
-    bool isWalking = false;
+    // rip :( no walking away endscene
+    // if(endOfLevelStarting){
+    //   animator.SetBool("Endscene", true);
+    //   cutScene ();
+    // }else{
+      movement();
+  	//}
+  }
 
-  		if (Input.GetKey(KeyCode.D)){
-        //right
-        isWalking = true;
-  			transform.position += Vector3.right * speed * Time.deltaTime;
-            if (!facingRight && !PauseMenu.GameIsPaused)
-            {
-                Flip();
-            }
-  		}
-      if (Input.GetKey(KeyCode.A)){
-        //left
-        isWalking = true;
-        transform.position += Vector3.left * speed * Time.deltaTime;
-            if (facingRight && !PauseMenu.GameIsPaused)
-            {
-                Flip();
-            }
-  		}
+  void cutScene (){
+      playerGO.transform.localScale += scaleChange;
+      playerGO.transform.position += positionChange;
 
-      if (Input.GetKey(KeyCode.S) && !isGrounded()){
-        //ForceDown stops jump and speeds down
-        jumping = false;
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
-  			transform.position += Vector3.down * shamshDown * Time.deltaTime;
-  		}
-
-      if (Input.GetKey(KeyCode.Space) && isGrounded() && !Input.GetKey(KeyCode.S) && !jumping){
-        //Jump only if on Ground and not ForceDown
-
-        // rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, jumpSpeed);
-        jumping = true;
-        tempJumpSpeed = jumpSpeed;
-        tempTimeToIncrease = timeToIncrease;
-        startTime = Time.time;
-  		}
-      if (Input.GetKeyUp(KeyCode.Space)){
-        //Resets everything for next Jump
-        tempJumpSpeed = jumpSpeed;
-        tempTimeToIncrease = timeToIncrease;
-        jumping = false;
+      if(playerGO.transform.localScale.y<0.1f){
+        endOfLevelStarting = false;
       }
+  }
 
-      if (Input.GetKey(KeyCode.Space) && jumping){
-        //longjump
-        if(Time.time - startTime > tempTimeToIncrease){
-          if(tempJumpSpeed + jumpIncrease > maxJumpSpeed){
-            jumping = false;
-          }else{
-            tempJumpSpeed = tempJumpSpeed + jumpIncrease;
-            // rigidBody.velocity = new Vector2(rigidBody.velocity.x, tempJumpSpeed);
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, tempJumpSpeed);
-            startTime = Time.time;
-            tempTimeToIncrease = (int) (tempTimeToIncrease/1.2);
-          }
+    void movement(){
+      bool isWalking = false;
+
+    		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
+          //right
+          isWalking = true;
+    			transform.position += Vector3.right * speed * Time.deltaTime;
+              if (!facingRight && !PauseMenu.GameIsPaused)
+              {
+                  Flip();
+              }
+    		}
+        if (Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow)){
+          //left
+          isWalking = true;
+          transform.position += Vector3.left * speed * Time.deltaTime;
+              if (facingRight && !PauseMenu.GameIsPaused)
+              {
+                  Flip();
+              }
+    		}
+
+        if (Input.GetKey(KeyCode.S) && !isGrounded() || Input.GetKey(KeyCode.DownArrow)){
+          //ForceDown stops jump and speeds down
+          jumping = false;
+          rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
+    			transform.position += Vector3.down * shamshDown * Time.deltaTime;
+    		}
+
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) && isGrounded() && !Input.GetKey(KeyCode.S) && !jumping){
+          //Jump only if on Ground and not ForceDown
+
+          // rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+          rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, jumpSpeed);
+          jumping = true;
+          tempJumpSpeed = jumpSpeed;
+          tempTimeToIncrease = timeToIncrease;
+          startTime = Time.time;
+    		}
+        if (Input.GetKeyUp(KeyCode.Space)){
+          //Resets everything for next Jump
+          tempJumpSpeed = jumpSpeed;
+          tempTimeToIncrease = timeToIncrease;
+          jumping = false;
         }
-  		}
-      isJumping = !isGrounded();
-      animator.SetBool("Walking", isWalking);
-      animator.SetBool("Jumping", isJumping);
-  	}
+
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) && jumping){
+          //longjump
+          if(Time.time - startTime > tempTimeToIncrease){
+            if(tempJumpSpeed + jumpIncrease > maxJumpSpeed){
+              jumping = false;
+            }else{
+              tempJumpSpeed = tempJumpSpeed + jumpIncrease;
+              // rigidBody.velocity = new Vector2(rigidBody.velocity.x, tempJumpSpeed);
+              rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, tempJumpSpeed);
+              startTime = Time.time;
+              tempTimeToIncrease = (int) (tempTimeToIncrease/1.2);
+            }
+          }
+    		}
+        isJumping = !isGrounded();
+        animator.SetBool("Walking", isWalking);
+        animator.SetBool("Jumping", isJumping);
+    }
 
     void Flip()
     {
