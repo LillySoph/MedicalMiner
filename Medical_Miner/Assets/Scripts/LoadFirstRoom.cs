@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadOnSpace : MonoBehaviour
+public class LoadFirstRoom : MonoBehaviour
 {
+    private GameMaster gameMaster;
+
     // Start is called before the first frame update
     void Start()
     {

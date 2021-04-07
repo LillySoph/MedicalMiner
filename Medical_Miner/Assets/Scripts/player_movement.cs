@@ -32,6 +32,7 @@ public class player_movement : MonoBehaviour
   private float tempTimeToIncrease;
   private bool facingRight = true;
 
+  public Animator animator;
 
   private bool isGrounded(){
     //Box around bottom of player that checks if player is on something with the Layer "Ground"
@@ -46,19 +47,24 @@ public class player_movement : MonoBehaviour
 
   // Time.deltaTime => time per frame
   // => movementspeed/seconds and not movementspeed/frame
+  private bool isJumping = false;
   void Update () {
+    bool isWalking = false;
+
   		if (Input.GetKey(KeyCode.D)){
         //right
+        isWalking = true;
   			transform.position += Vector3.right * speed * Time.deltaTime;
-            if (facingRight == false)
+            if (!facingRight && !PauseMenu.GameIsPaused)
             {
                 Flip();
             }
   		}
       if (Input.GetKey(KeyCode.A)){
         //left
+        isWalking = true;
         transform.position += Vector3.left * speed * Time.deltaTime;
-            if (facingRight == true)
+            if (facingRight && !PauseMenu.GameIsPaused)
             {
                 Flip();
             }
@@ -102,6 +108,9 @@ public class player_movement : MonoBehaviour
           }
         }
   		}
+      isJumping = !isGrounded();
+      animator.SetBool("Walking", isWalking);
+      animator.SetBool("Jumping", isJumping);
   	}
 
     void Flip()

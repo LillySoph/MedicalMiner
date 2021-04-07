@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
+  [SerializeField]
+  public int differentRoomsPerLevel = 6;
+
   private static GameMaster instance;
   public Vector2 lastCheckPointPos;
   public int score;
-  public int roomsVisited;
+  public int roomsVisited = 1;
+  public int currentLevel = 1;
 
   void Awake(){
     if (instance == null){
       instance = this;
       DontDestroyOnLoad(instance);
-    }else{
+    } else{
       Destroy(gameObject);
     }
   }
