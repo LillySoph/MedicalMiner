@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1_Room_original.unity
     guid: d8c64af2f47106148ab33b6c51c0a10d
   - enabled: 1
-    path: Assets/Scenes/_Startscreen.unity
+    path: Assets/Scenes/Startscreen.unity
     guid: 0387d53a22a58b74c923617fd50c1d4d
   - enabled: 1
     path: Assets/Scenes/Level1_Room_1.unity
@@ -29,9 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1_Room_5.unity
     guid: 78abb81f78c92c647b2accc3f8fae732
-  - enabled: 1
-    path: Assets/Scenes/Level1_Room_6.unity
-    guid: 4b9b992c9b2afa44ba23d0504e6b4430
   - enabled: 1
     path: Assets/Scenes/Level1Complete.unity
     guid: 07c8054e42731b14bbf14ea6d6406112
@@ -53,7 +50,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level2_Room_6.unity
     guid: 9908ab40c26168a459a3e15aff91a620
-  - enabled: 1
-    path: Assets/Scenes/Level2Complete.unity
-    guid: 8b4e6644ed6e2174982cee3b06aef132
   m_configObjects: {}
