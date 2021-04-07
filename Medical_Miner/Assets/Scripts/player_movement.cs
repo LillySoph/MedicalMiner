@@ -109,8 +109,6 @@ public class player_movement : MonoBehaviour
         }
   		}
       isJumping = !isGrounded();
-      Debug.Log("W:" + isWalking);
-      Debug.Log("J:" + isJumping);
       animator.SetBool("Walking", isWalking);
       animator.SetBool("Jumping", isJumping);
   	}
