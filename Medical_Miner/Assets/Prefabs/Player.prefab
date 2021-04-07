@@ -57,10 +57,10 @@ MonoBehaviour:
   speed: 5
   shamshDown: 15
   distance: 0.9
-  jumpIncrease: 0.1
-  maxJumpSpeed: 13
+  jumpIncrease: 0.15
+  maxJumpSpeed: 9
   timeToIncrease: 0.1
-  jumpSpeed: 7
+  jumpSpeed: 6
   animator: {fileID: 6044372715368017706}
 --- !u!50 &8727562666700457037
 Rigidbody2D:
